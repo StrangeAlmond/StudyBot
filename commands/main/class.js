@@ -95,7 +95,7 @@ export default {
             return await interaction.reply({ embeds: [failEmbed] });
         }
 
-        if (interaction.guildData.classes[classID.toLowerCase()].includes(interaction.member.id)) {
+        if (interaction.guildData.classes[classID.toLowerCase()].members.includes(interaction.member.id)) {
             failEmbed.setDescription("You've already joined this class.");
             return await interaction.reply({ embeds: [failEmbed] });
         }
@@ -117,7 +117,7 @@ export default {
             return await interaction.reply({ embeds: [failEmbed] });
         }
 
-        if (!interaction.guildData.classes[classID.toLowerCase()].includes(interaction.member.id)) {
+        if (!interaction.guildData.classes[classID.toLowerCase()].members.includes(interaction.member.id)) {
             failEmbed.setDescription("You don't belong to this class.");
             return await interaction.reply({ embeds: [failEmbed] });
         }
