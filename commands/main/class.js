@@ -112,7 +112,7 @@ export default {
         const classID = interaction.options.getString("name");
 
         const failEmbed = this.failEmbed(interaction);
-        if (interaction.guildData.classes[classID.toLowerCase()]) {
+        if (!interaction.guildData.classes[classID.toLowerCase()]) {
             failEmbed.setDescription("Class does not exist.");
             return await interaction.reply({ embeds: [failEmbed] });
         }
