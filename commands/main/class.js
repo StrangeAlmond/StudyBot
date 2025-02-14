@@ -187,6 +187,11 @@ export default {
     joinClass(interaction, classID) {
         interaction.guildData.classes[classID.toLowerCase()].members.push(interaction.member.id);
         interaction.client.guildDb.set(interaction.guild.id, interaction.guildData.classes, "classes");
+
+        const classRole = interaction.guildData.classes[classID.toLowerCase()].role;
+        if (classRole) {
+            interaction.member.roles.add(classRole).catch(console.error);
+        }
     },
 
     leaveClass(interaction, classID) {
@@ -194,6 +199,10 @@ export default {
         interaction.guildData.classes[classID.toLowerCase()].members.splice(index, 1);
         interaction.client.guildDb.set(interaction.guild.id, interaction.guildData.classes, "classes");
 
+        const classRole = interaction.guildData.classes[classID.toLowerCase()].role;
+        if (classRole) {
+            interaction.member.roles.remove(classRole).catch(console.error);
+        }
     },
 
     failEmbed(interaction) {
