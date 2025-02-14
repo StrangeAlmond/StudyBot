@@ -103,7 +103,7 @@ export default {
         this.joinClass(interaction, classID);
 
         const responseEmbed = this.responseEmbed(interaction);
-        responseEmbed.setDescription(`Successfully joined the \`${interaction.guildData.options[classID.toLowerCase()].name}\` class.`);
+        responseEmbed.setDescription(`Successfully joined the \`${interaction.guildData.classes[classID.toLowerCase()].name}\` class.`);
 
         return await interaction.reply({ embeds: [responseEmbed] });
     },
